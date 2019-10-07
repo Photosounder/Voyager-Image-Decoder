@@ -1,0 +1,19 @@
+= Voyager Image Decoder
+=== What I changed
+NASA offers space probes Voyager 1 and 2's images in a compressed raw format, however https://pds-imaging.jpl.nasa.gov/data/vg1_vg2-j-iss-2-edr-v3.0/vg_0006/software/cdcomp.c[their decompression program] hasn't been updated since August 1989, so it doesn't come close to compiling. I modernised it, simplified it, fixed bugs, librarified it, made it re-entrant, made it output 32-bit float TIFF images and made it work on any number of files you drag-and-drop onto it. So you can select a whole folder worth of Voyager's .imq files, drop them on cdcomp.exe and it will convert them all into .tif files in the same folder.
+
+=== How to use
+You can download https://pds-rings.seti.org/viewmaster/archives-volumes/VG_0xxx/[whole volumes of those .imq images] to decode. Either get the Windows binary from the https://github.com/Photosounder/Voyager-Image-Decoder/releases[releases] or compile the program yourself. The only dependency is https://github.com/Photosounder/rouziclib[rouziclib], just put the whole rouziclib folder in your include path.
+
+=== As a C library
+I structured the files voyager_decomp.h and voyager_decomp.c so that they can be used as a library, so that we can call the code from another program (like a viewer) if we so desire. With one rather important caveat, that code relies on many of rouziclib's features. It's possible to remove the need for the whole of rouziclib by copying over only the needed features, but I for one am not going to do that.
+
+=== Output
+The raw images are 800x800 with 8 bits per pixel. However those 8 bits are on a linear scale and not sRGB (gamma compressed) like 8 bit per channel images typically are. So to conserve the superior accuracy of that these images have in the brights we need a higher precision, that's why I chose to convert to 32-bit floating point TIFF. Here's a photo of Jupiter in March 1979 (https://pds-imaging.jpl.nasa.gov/data/vg1_vg2-j-iss-2-edr-v3.0/vg_0006/jupiter/c1631xxx/c1631738.imq[c1631738.imq]) taken through a violet filter, as converted by this program:
+image::img/c1631738.imq[c1631738.imq]
+
+== Does it look actually correct though?
+https://pds-imaging.jpl.nasa.gov/data/vg1_vg2-j-iss-2-edr-v3.0/vg_0006/document/volinfo.txt[NASA claims] that "Each picture element (pixel) in the two dimensional image array is represented as an 8-bit value, and the value--in the range 0 to 255--is proportional to the amount of light detected at that point", and I decoded the images accordingly. But is this really correct? From the way the pictures look overly bright, washed out, with an overly bright sky (which should be much closer to black), it's tempting to think that NASA's description is actually wrong. Applying an arbitrary gamma correction (a gamma of 0.5, like squaring every pixel value) seems to drive that point home:
+image::img/C1631738_squared.imq[C1631738_squared.imq]
+
+If anyone knows anything about the topic I would like to hear about it (open an issue). In the meantime it's probably sensible to apply a gamma when processing the images.
