@@ -7,7 +7,7 @@ NASA offers space probes Voyager 1 and 2's images in a compressed raw format, ho
 You can download https://pds-rings.seti.org/viewmaster/archives-volumes/VG_0xxx/[whole volumes of those .imq images] to decode. Either get the Windows binary from the https://github.com/Photosounder/Voyager-Image-Decoder/releases[releases] or compile the program yourself. The only dependency is https://github.com/Photosounder/rouziclib[rouziclib], just put the whole rouziclib folder in your include path.
 
 === As a C library
-I structured the files voyager_decomp.h and voyager_decomp.c so that they can be used as a library, so that we can call the code from another program (like a viewer) if we so desire. With one rather important caveat, that code relies on many of rouziclib's features. It's possible to remove the need for the whole of rouziclib by copying over only the needed features, but I for one am not going to do that.
+I structured the files link:voyager_decomp.h[voyager_decomp.h] and link:voyager_decomp.c[voyager_decomp.c] so that they can be used as a library, so that we can call the code from another program (like a viewer) if we so desire. With one rather important caveat, that code relies on many of rouziclib's features. It's possible to remove the need for the whole of rouziclib by copying over only the needed features, but I for one am not going to do that.
 
 === Output
 :imagesdir: img
