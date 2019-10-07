@@ -1,4 +1,5 @@
 = Voyager Image Decoder
+
 === What I changed
 NASA offers space probes Voyager 1 and 2's images in a compressed raw format, however https://pds-imaging.jpl.nasa.gov/data/vg1_vg2-j-iss-2-edr-v3.0/vg_0006/software/cdcomp.c[their decompression program] hasn't been updated since August 1989, so it doesn't come close to compiling. I modernised it, simplified it, fixed bugs, librarified it, made it re-entrant, made it output 32-bit float TIFF images and made it work on any number of files you drag-and-drop onto it. So you can select a whole folder worth of Voyager's .imq files, drop them on cdcomp.exe and it will convert them all into .tif files in the same folder.
 
