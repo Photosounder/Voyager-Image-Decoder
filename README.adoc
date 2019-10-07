@@ -17,6 +17,6 @@ image::C1631738.png[c1631738.png]
 == Does it look actually correct though?
 https://pds-imaging.jpl.nasa.gov/data/vg1_vg2-j-iss-2-edr-v3.0/vg_0006/document/volinfo.txt[NASA claims] that "Each picture element (pixel) in the two dimensional image array is represented as an 8-bit value, and the value--in the range 0 to 255--is proportional to the amount of light detected at that point", and I decoded the images accordingly. But is this really correct? From the way the pictures look overly bright, washed out, with an overly bright sky (which should be much closer to black), it's tempting to think that NASA's description is actually wrong. Applying an arbitrary gamma correction (a gamma of 0.5, like squaring every pixel value) seems to drive that point home:
 
-image::C1631738_squared.png[C1631738_squared.png]
+image::C1631738_squared.jpg[C1631738_squared.jpg]
 
 If anyone knows anything about the topic I would like to hear about it (open an issue). In the meantime it's probably sensible to apply a gamma when processing the images.
