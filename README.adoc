@@ -1,2 +1,0 @@
-# Voyager-Image-Decoder
-A modernised version of NASA's 1989 Voyager Image Decompression Program
