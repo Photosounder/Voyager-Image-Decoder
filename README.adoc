@@ -13,11 +13,11 @@ I structured the files link:voyager_decomp.h[voyager_decomp.h] and link:voyager_
 :imagesdir: img
 The raw images are 800x800 with 8 bits per pixel. However those 8 bits are on a linear scale and not sRGB (gamma compressed) like 8 bit per channel images typically are. So to conserve the superior accuracy of that these images have in the brights we need a higher precision, that's why I chose to convert to 32-bit floating point TIFF. Here's a photo of Jupiter in March 1979 (https://pds-imaging.jpl.nasa.gov/data/vg1_vg2-j-iss-2-edr-v3.0/vg_0006/jupiter/c1631xxx/c1631738.imq[c1631738.imq]) taken through a violet filter, as converted by this program:
 
-image::C1631738.png[c1631738.png]
+image::C1631738.png[c1631738.png,align="center"]
 
 == Does it look actually correct though?
 https://pds-imaging.jpl.nasa.gov/data/vg1_vg2-j-iss-2-edr-v3.0/vg_0006/document/volinfo.txt[NASA claims] that "Each picture element (pixel) in the two dimensional image array is represented as an 8-bit value, and the value--in the range 0 to 255--is proportional to the amount of light detected at that point", and I decoded the images accordingly. But is this really correct? From the way the pictures look overly bright, washed out, with an overly bright sky (which should be much closer to black), it's tempting to think that NASA's description is actually wrong. Applying an arbitrary gamma correction (a gamma of 0.5, like squaring every pixel value) seems to drive that point home:
 
-image::C1631738_squared.jpg[C1631738_squared.jpg]
+image::C1631738_squared.jpg[C1631738_squared.jpg,align="center"]
 
 If anyone knows anything about the topic I would like to hear about it (open an issue). In the meantime it's probably sensible to apply a gamma when processing the images.
