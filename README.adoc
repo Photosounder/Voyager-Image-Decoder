@@ -11,7 +11,7 @@ I structured the files link:voyager_decomp.h[voyager_decomp.h] and link:voyager_
 
 === Output
 :imagesdir: img
-The raw images are 800x800 with 8 bits per pixel. However those 8 bits are on a linear scale and not sRGB (gamma compressed) like 8 bit per channel images typically are. So to conserve the superior accuracy of that these images have in the brights we need a higher precision, that's why I chose to convert to 32-bit floating point TIFF. Here's a photo of Jupiter in March 1979 (https://pds-imaging.jpl.nasa.gov/data/vg1_vg2-j-iss-2-edr-v3.0/vg_0006/jupiter/c1631xxx/c1631738.imq[c1631738.imq]) taken through a violet filter, as converted by this program:
+The raw images are 800x800 with 8 bits per pixel. However those 8 bits are on a linear scale and not sRGB (gamma compressed) like 8 bit per channel images typically are. So to conserve the superior accuracy that these images have in the brights we need a higher precision, that's why I chose to convert to 32-bit floating point TIFF. Here's a photo of Jupiter in March 1979 (https://pds-imaging.jpl.nasa.gov/data/vg1_vg2-j-iss-2-edr-v3.0/vg_0006/jupiter/c1631xxx/c1631738.imq[c1631738.imq]) taken through a violet filter, as converted by this program:
 
 image::C1631738.png[c1631738.png,float="right",align="center"]
 
