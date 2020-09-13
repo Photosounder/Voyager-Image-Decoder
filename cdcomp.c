@@ -37,4 +37,6 @@ int main(int argc, char **argv)
 		free(data);
 		fprintf_rl(stdout, "\n");
 	}
+
+	return 0;
 }
